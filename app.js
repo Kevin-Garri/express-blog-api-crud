@@ -1,6 +1,5 @@
 const express = require('express');
 const postRouter = require('./router/router');
-const { log } = require('console');
 const app = express();
 const port = 3000;
 
