@@ -7,7 +7,7 @@ app.get('/', (req, res) => {
   res.send('i miei post');
 })
 
-app.use('/router', postRouter);
+app.use('/posts', postRouter);
 
 app.listen(port, () => {
   console.log('sono in ascolto sulla porta 3000');
