@@ -30,3 +30,19 @@ app.listen(port, () => {
   console.log('sono in ascolto sulla porta 3000');
 })
 
+app.put('/store/:id', (req, res) => {
+  const postId = parseInt(req.params.id);
+  const postIndex = posts.findIndex(post => post.id === postId);
+  if (postIndex !== -1) {
+    posts[postIndex] = {
+      id: postId,
+      title: req.body.title,
+      content: req.body.content,
+      images: req.body.images
+    };
+    console.log("post aggiornato", posts[postIndex]);
+    res.status(200).send(post[postIndex]);
+  } else {
+    res.status(404).send({ message: "Post non trovato" });
+  };
+});
