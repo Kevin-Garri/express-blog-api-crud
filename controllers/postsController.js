@@ -15,9 +15,9 @@ const show = (req, res) => {
   if (!post) {
     res.status(404)
     return res.json({
-      message: "post inesistente, prova altro",
+      message: 'post inesistente, prova altro',
       status: 404,
-      error: "kg not found"
+      error: 'not found'
     })
   }
   res.json(post)
@@ -29,15 +29,14 @@ const destroy = (req, res) => {
   if (!post) {
     res.status(404)
     return res.json({
-      message: "post inesistente, prova altro",
+      message: 'post inesistente, prova altro',
       status: 404,
-      error: "kg not found"
+      error: 'not found'
     })
   }
   post.splice(post.indexOf(post), 1)
   res.status(204)
 }
-
 
 module.exports = {
   index,
