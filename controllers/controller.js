@@ -23,6 +23,61 @@ const show = (req, res) => {
   res.json(post)
 }
 
+//store
+const store = (req, res) => {
+  const id = posts.at(-1).id + 1;
+
+  const newPost = {
+    id,
+    ...req.body
+  }
+
+  posts.push(newPost)
+
+  res.status(201)
+  req.json(posts)
+}
+
+//update
+const update = (req, res) => {
+  const id = req.params.id
+  const post = posts.find(post => post.id == id);
+
+  if (!post) {
+    res.status(404)
+    return res.json({
+      message: 'post inesistente, prova un altro dolce',
+      staut: 404,
+      error: 'not found'
+    })
+  };
+
+  for (let key in req.body) {
+    post[key] = req.body[body]
+  }
+  res.json(post)
+}
+
+//modify
+const modify = (req, res) => {
+  const id = req.params.id
+  const post = posts.find(post => post.id == id);
+
+  if (!post) {
+    res.status(404)
+    return res.json({
+      message: 'post inesistente, prova un altro dolce',
+      staut: 404,
+      error: 'not found'
+    })
+  };
+
+  for (let key in req.body) {
+    post[key] = req.body[body]
+  }
+  res.json(post)
+}
+
 //destroy
 const destroy = (req, res) => {
   const post = post.find(post => post.id == req.params.id)
@@ -41,5 +96,8 @@ const destroy = (req, res) => {
 module.exports = {
   index,
   show,
+  store,
+  update,
+  modify,
   destroy
 }
